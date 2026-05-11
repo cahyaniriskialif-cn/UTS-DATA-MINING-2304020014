@@ -45,9 +45,8 @@ Tahapan penelitian yang dilakukan pada penelitian ini adalah sebagai berikut:
 5. Pembagian data training dan validasi
 6. Pembuatan model Random Forest
 7. Evaluasi model
-8. Visualisasi feature importance
-9. Prediksi data testing
-10. Penyimpanan hasil prediksi
+8. Prediksi data testing
+9. Penyimpanan hasil prediksi
 
 **6. PERSIAPAN DATA**
 
@@ -249,5 +248,58 @@ Visualisasi pohon keputusan menunjukkan bagaimana model melakukan proses klasifi
 
 Melalui visualisasi ini dapat diketahui fitur-fitur yang sering digunakan dalam proses pengambilan keputusan, sehingga membantu memahami cara kerja model Decision Tree secara lebih jelas.
 
-**17. VISUALISASI FE
+**17. PREDIKSI DATA TESTING**
+
+Pada tahap ini, setelah model dilatih ulang menggunakan data training yaitu `model.fit(x,y)`. Kemudian model digunakan untuk melakukan prediksi pada data testing yaitu `test_pred=model=predict(test). Sehingga hasil prediksi dapat disimpan dalam variabel `test_pred`.
+
+**18. PENYIMPANAN HASIL PREDIKSI**
+
+Selanjutnya, pada tahap ini hasil prediksi akan disusun ke dalam DataFrame dan disimpan ke dalam file CSV. Sehingga,
+
+```python
+submission = pd.DataFrame({
+    'id': test_id,
+    'quality': test_pred
+})
+
+submission.to_csv('hasilprediksi_014.csv', index=False)
+```
+File CSV tersebut digunakan sebagai hasil akhir prediksi yang akan dikumpulkan.
+
+**19. HASIL PREDIKSI**
+
+Hasi prediksi ditampilkan dengan `display(submission)` dengan berisi dua kolom yaitu `Id` dan `quality` yang menunjukkan identitas data testing dan hasil prediksi kualitas wine. Pada percobaan ini karena dilakukan menggunakan dua metode yaitu Random Forest dan Decision Tree yang menghasilkan hasil akurasi yang memiliki sedikit perbedaan. Sehingga digunakan hasil prediksi terbaik yaitu menggunakan metode Random Forest. 
+
+**20. HASIL ANALISIS**
+
+Berdasarkan hasil analisis yang telah dilakukan, diperoleh beberapa insight sebagai berikut:
+
+1. Data kualitas wine memiliki distribusi yang tidak seimbang, di mana kelas kualitas 5 dan 6 memiliki jumlah data paling banyak.
+2. Model Random Forest mampu memberikan performa yang cukup baik dengan akurasi sekitar 57%–60%.
+3. Model masih mengalami kesulitan dalam memprediksi kelas minoritas seperti kualitas 4 dan 8 karena jumlah datanya sangat sedikit.
+4. Berdasarkan visualisasi feature importance, variabel alcohol dan sulphates memiliki pengaruh yang cukup besar terhadap kualitas wine.
+
+**22. KESIMPULAN**
+
+Berdasarkan penelitian yang telah dilakukan, algoritma Random Forest dapat digunakan untuk memprediksi kualitas wine berdasarkan karakteristik kimia yang dimiliki. Model yang dibangun mampu menghasilkan akurasi sekitar 57%–60% sehingga cukup baik dalam melakukan klasifikasi pada kelas mayoritas.
+
+Selain itu, hasil visualisasi feature importance menunjukkan bahwa beberapa variabel seperti alcohol dan sulphates memiliki pengaruh yang besar terhadap kualitas wine. Meskipun demikian, model masih memiliki keterbatasan dalam memprediksi kelas minoritas karena distribusi data yang tidak seimbang.
+
+**23. SARAN DAN MASUKKAN**
+
+Berdasarkan hasil penelitian, terdapat beberapa rekomendasi yang dapat dilakukan untuk pengembangan penelitian selanjutnya, yaitu:
+
+1. Menggunakan algoritma lain seperti KNN, atau XGBoost untuk membandingkan performa model.
+2. Menggunakan teknik balancing data seperti SMOTE untuk mengatasi ketidakseimbangan data.
+3. Menambah jumlah data training agar model dapat mempelajari pola data dengan lebih baik.
+4. Melakukan tuning parameter agar performa model menjadi lebih optimal.
+
+**24. DAFTAR PUSTAKA**
+Han, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques.
+
+
+Géron, A. (2019). Hands-On Machine Learning with Scikit-Learn, Keras, and TensorFlow.
+
+
+
 
