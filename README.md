@@ -295,6 +295,7 @@ Berdasarkan hasil penelitian, terdapat beberapa rekomendasi yang dapat dilakukan
 4. Melakukan tuning parameter agar performa model menjadi lebih optimal.
 
 **24. DAFTAR PUSTAKA**
+
 Han, J., Kamber, M., & Pei, J. (2012). Data Mining: Concepts and Techniques.
 
 
